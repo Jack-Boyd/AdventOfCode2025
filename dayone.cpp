@@ -8,6 +8,14 @@ struct Move {
   int amount;
 };
 
+int floorDiv(int a, int b) {
+  int res = a / b;
+  if (a % b != 0 && a < 0) {
+    res--;
+  }
+  return res;
+}
+
 std::vector<Move> loadMoves(const std::string &filename) {
   std::vector<Move> moves;
   std::ifstream inputFile(filename);
@@ -47,16 +55,16 @@ int partTwo(const std::vector<Move> &moves) {
   int dial = 50;
   int password = 0;
   for (const auto &move : moves) {
-    int step = (move.direction == 'L' ? -1 : 1);
+    int start = dial;
+    int change = (move.direction == 'L' ? -1 : 1) * move.amount;
+    int end = start + change;
 
-    // Horror time complexity
-    for (int i = 0; i < move.amount; ++i) {
-      dial += step;
-
-      if (dial % 100 == 0) {
-        password++;
-      }
+    if (end > start) {
+      password += (floorDiv(end, 100) - floorDiv(start, 100));
+    } else {
+      password += (floorDiv(start - 1, 100) - floorDiv(end - 1, 100));
     }
+    dial = end;
   }
   return password;
 }
