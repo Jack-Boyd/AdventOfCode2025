@@ -32,7 +32,7 @@ int partOne(const std::vector<Move> &moves) {
   int dial = 50;
   int password = 0;
 
-  for (auto move : moves) {
+  for (const auto &move : moves) {
     int change = (move.direction == 'L' ? -1 : 1) * move.amount;
     dial += change;
     dial = ((dial % 100) + 100) % 100;
@@ -46,6 +46,18 @@ int partOne(const std::vector<Move> &moves) {
 int partTwo(const std::vector<Move> &moves) {
   int dial = 50;
   int password = 0;
+  for (const auto &move : moves) {
+    int step = (move.direction == 'L' ? -1 : 1);
+
+    // Horror time complexity
+    for (int i = 0; i < move.amount; ++i) {
+      dial += step;
+
+      if (dial % 100 == 0) {
+        password++;
+      }
+    }
+  }
   return password;
 }
 
@@ -54,7 +66,9 @@ int main() {
   std::vector<Move> moves = loadMoves(filename);
 
   int password = partOne(moves);
-  std::cout << password << std::endl;
+  int password2 = partTwo(moves);
+
+  std::cout << password2 << std::endl;
 
   return 0;
 }
