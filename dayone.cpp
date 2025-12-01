@@ -8,9 +8,9 @@ struct Move {
   int amount;
 };
 
-int floorDiv(int a, int b) {
-  int res = a / b;
-  if (a % b != 0 && a < 0) {
+int floorDiv(int a) {
+  int res = a / 100;
+  if (a % 100 != 0 && a < 0) {
     res--;
   }
   return res;
@@ -60,9 +60,9 @@ int partTwo(const std::vector<Move> &moves) {
     int end = start + change;
 
     if (end > start) {
-      password += (floorDiv(end, 100) - floorDiv(start, 100));
+      password += (floorDiv(end) - floorDiv(start));
     } else {
-      password += (floorDiv(start - 1, 100) - floorDiv(end - 1, 100));
+      password += (floorDiv(start - 1) - floorDiv(end - 1));
     }
     dial = end;
   }
