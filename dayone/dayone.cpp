@@ -56,8 +56,7 @@ int partTwo(const std::vector<Move> &moves) {
   int password = 0;
   for (const auto &move : moves) {
     int start = dial;
-    int change = (move.direction == 'L' ? -1 : 1) * move.amount;
-    int end = start + change;
+    int end = start + (move.direction == 'L' ? -1 : 1) * move.amount;
 
     if (end > start) {
       password += (floorDiv(end) - floorDiv(start));
