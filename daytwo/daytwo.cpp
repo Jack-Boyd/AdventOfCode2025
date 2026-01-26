@@ -89,10 +89,8 @@ int main() {
   std::string filename = "daytwo.txt";
   std::vector<std::string> ids = loadIds(filename);
 
-  long invalidIds = partOne(ids);
-  long invalidIds2 = partTwo(ids);
-  std::cout << invalidIds << std::endl;
-  std::cout << invalidIds2 << std::endl;
+  std::cout << "Part One: " << partOne(ids) << std::endl;
+  std::cout << "Part Two: " << partTwo(ids) << std::endl;
 
   return 0;
 }

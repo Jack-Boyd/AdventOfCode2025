@@ -72,10 +72,8 @@ int main() {
   std::string filename = "dayone.txt";
   std::vector<Move> moves = loadMoves(filename);
 
-  int password = partOne(moves);
-  int password2 = partTwo(moves);
-
-  std::cout << password2 << std::endl;
+  std::cout << "Part One: " << partOne(moves) << std::endl;
+  std::cout << "Part Two: " << partTwo(moves) << std::endl;
 
   return 0;
 }

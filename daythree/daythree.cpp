@@ -65,9 +65,8 @@ int main() {
   std::string filename = "daythree.txt";
   std::vector<std::string> banks = loadBanks(filename);
 
-  int joltage = partOne(banks);
-  unsigned long joltage12 = partTwo(banks);
-  std::cout << joltage12 << std::endl;
+  std::cout << "Part One: " << partOne(banks) << std::endl;
+  std::cout << "Part Two: " << partTwo(banks) << std::endl;
 
   return 0;
 }
