@@ -5,7 +5,7 @@
 #include <string>
 #include <vector>
 
-typedef uint64_t int64;
+using int64 = uint64_t;
 
 struct Range {
   int64 start;
